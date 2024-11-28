@@ -1,29 +1,10 @@
 # test_klerk_2
 
-This template should help get you started developing with Vue 3 in Vite.
+Необходимо сверстать и выложить в любую песочницу макет с адаптивом. 
+Разрешено использовать только фреймворк tailwind все интерактивные элементы должны нажиматься, подсвечиваться. 
+Если в макете не достаёт какой-то информации, можно делать на свой вкус. 
+Сделать нужно в виде vue комнонента, при необходимости – внутренние элементы тоже можно разбить на отдельные компоненты. 
+Архитектура, семантика, используемые теги — всё это нужно сделать исходя из своего представления о том, как делать правильно.
 
-## Recommended IDE Setup
-
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
+Макет:
+https://www.figma.com/file/YnIvm5I5AWFwO67u8bRKGf/%D0%A2%D0%B5%D1%81%D1%82%D0%BE%D0%B2%D0%BE%D0%B5?node-id=1%3A2325

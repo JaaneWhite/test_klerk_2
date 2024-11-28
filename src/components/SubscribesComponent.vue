@@ -33,7 +33,7 @@
     <div class="main-content-block w-full bg-[#F5F5F8] px-[16px] py-[32px]" >
       <h2 class="main-content-title
       w-full font-500 text-[24px] leading-[32px] letter-[-1%] pb-[16px]">Выберите рассылки, которые подходят именно вам</h2>
-      <form class="email-form w-full h-[56px] relative ">
+      <form class="email-form w-full h-[56px] relative mb-[16px]">
         <input type="email"
                placeholder="Электронная почта"
                class="w-full h-[56px] rounded-r-[100px] rounded-l-[4px] p-[16px]
@@ -47,11 +47,8 @@
           />
         </button>
       </form>
-      <div class="subscribe-all-block w-full flex flex-row">
-        <button class="switch-btn small">
-          <span class="round rounded-full "></span>
-        </button>
-      </div>
+      <subscribe-all-btn class="mb-[24px]" />
+
     </div>
 
   </div>
@@ -60,6 +57,7 @@
 <script setup>
 import BreadCrumbs from "@/components/BreadCrumbs.vue";
 import {reactive, ref} from "vue";
+import SubscribeAllBtn from "@/components/SubscribeAllBtn.vue";
 
 const breadcrumbsItems = [
   {text: 'Главная', link: '/'},
