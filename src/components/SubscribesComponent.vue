@@ -68,6 +68,9 @@
       </div>
 
     </section>
+    <div class="bottom w-full flex justify-center pt-[48px] pb-[48px]">
+      <img src="/images/bottom_img.png">
+    </div>
 
   </div>
 </template>
