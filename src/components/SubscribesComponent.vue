@@ -1,7 +1,8 @@
 <template>
   <div class="subscribes-block
-              mx-auto w-full max-w-screen-lg
+              mx-auto w-full max-w-[1024px]
               pt-[24px] lg:pt-[48px]
+
 ">
     <div class="logo-block w-full pb-[28px] lg:pb-[24px]">
       <img
@@ -30,26 +31,43 @@
         </li>
       </ul>
     </nav>
-    <div class="main-content-block w-full bg-[#F5F5F8] px-[16px] py-[32px]" >
+    <section class="main-content-block
+             w-full bg-[#F5F5F8]
+             px-[16px] lg:px-[24px] py-[32px] lg:py-[48px]
+             lg:rounded-[16px]">
       <h2 class="main-content-title
-      w-full font-500 text-[24px] leading-[32px] letter-[-1%] pb-[16px]">Выберите рассылки, которые подходят именно вам</h2>
-      <form class="email-form w-full h-[56px] relative mb-[16px]">
+      w-full flex font-500 text-[24px] leading-[32px] letter-[-1%] pb-[16px]
+      lg:justify-center lg:pb-[24px]">
+        Выберите рассылки, которые подходят именно вам</h2>
+      <form class="email-form w-full h-[56px] relative mb-[16px] lg:mb-[18px]">
         <input type="email"
                placeholder="Электронная почта"
                class="w-full h-[56px] rounded-r-[100px] rounded-l-[4px] p-[16px]
-               placeholder:text-[#666666] placeholder:text-[16px]
-" />
-        <button class="email-btn h-[56px] w-[56px] rounded-full bg-[#316FEE] text-white absolute top-0 right-0">
+               lg:rounded-l-[8px]
+               placeholder:text-[#666666] placeholder:text-[16px]" />
+        <button class="email-btn
+        h-[56px] w-[56px] rounded-full
+        lg:w-[163px] rounded-[100px]
+        lg:flex justify-center justify-items-center
+        bg-[#316FEE] text-white absolute top-0 right-0">
           <img
               src="@/assets/arrow.png"
-              class="mx-auto"
+              class="mx-auto lg:hidden"
               alt="logo"
           />
+          <span class="sm:hidden lg:flex text-[16px] text-white leading-[24px] m-auto">Подписаться</span>
         </button>
       </form>
       <subscribe-all-btn class="mb-[24px]" />
+      <div class="subs-list
+                  grid lg:grid-cols-2 gap-[24px]
+">
+        <subscribe-tile
+            v-for="item in subscribesItems" :key="item.id" :item="item"
+        />
+      </div>
 
-    </div>
+    </section>
 
   </div>
 </template>
@@ -58,6 +76,7 @@
 import BreadCrumbs from "@/components/BreadCrumbs.vue";
 import {reactive, ref} from "vue";
 import SubscribeAllBtn from "@/components/SubscribeAllBtn.vue";
+import SubscribeTile from "@/components/SubscribeTile.vue";
 
 const breadcrumbsItems = [
   {text: 'Главная', link: '/'},
@@ -71,6 +90,56 @@ const navItems = reactive([
   {id: 'mess', title: 'Мессенджеры', block: '' },
 ])
 let navActive = ref({id: 'subs', title: 'Рассылки', block: '' })
+
+const subscribesItems = [{
+    id: 1,
+    time: 'Перед рассветом',
+    title: 'Утренний бухгалтер',
+    description: 'Самые важные новости и события за день. Кратко, по делу, структурировано.',
+    content: [
+        'Новости для бухгалтеров, ИП и директора',
+        'Подборка статей за день'
+    ],
+    count: 'Уже получает 59 342 человек',
+    image: 'skrepka'
+  },
+  {
+    id: 2,
+    time: 'После заката',
+    title: 'Ночной бухгалтер',
+    description: 'Самая краткая газета о налогах и бухучете в мире — современная рассылка для вечернего чтения.',
+    content: [
+      'Новости для бухгалтеров, ИП и директора',
+      'Подборка статей за день'
+    ],
+    count: 'Уже получает 59 342 человек',
+    image: 'skrepka_dark'
+  },
+  {
+    id: 3,
+    time: 'Раз в две недели',
+    title: 'Ножницы скидок',
+    description: 'Подборка самых выгодных и полезных спецпредложений от надежных компаний.',
+    content: [
+        'Акции и скидки от лидеров рынка',
+        'Те, кто подписался – экономят много денег 🤑'
+    ],
+    count: 'Уже получает 59 342 человек',
+    image: 'scissors'
+  },
+  {
+    id: 4,
+    time: 'По мере появления анонсов',
+    title: 'Чемодан вебинаров',
+    description: 'Подборка с анонсами бесплатных вебинаров на самые топовые темы при участии экспертов.',
+    content: [
+        'Никогда не пришлем платные вебинары',
+        'Подборка топовых тем для вебинаров'
+    ],
+    count: 'Уже получает  92 082 человек',
+    image: 'vebinar'
+  }
+]
 
 function selectNavItem(navItem) {
   navActive.value = navItem
