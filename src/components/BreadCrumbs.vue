@@ -39,7 +39,11 @@ defineProps({
         line-height: 16px;
         color: #999999;
         border-bottom: 1px solid #E6EDFF;
+        &:hover {
+          color: #5a8cf1;
+        }
       }
+
 
     }
 

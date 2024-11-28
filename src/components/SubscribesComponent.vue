@@ -20,17 +20,7 @@
       text-[32px] lg:text-[56px]
       leading-[42px] lg:leading-[72px]">Подписки «Клерка»</h1>
     </div>
-    <nav class="subscribes-nav w-full">
-      <ul class="subscribes-nav-list w-full flex flex-row justify-center">
-        <li v-for="item in navItems" :key="item.id"
-            :class="{active: navActive.id === item.id}"
-            @click="selectNavItem(item)"
-            class="nav-item"
-        >
-          {{item.title}}
-        </li>
-      </ul>
-    </nav>
+    <SubscribesNav />
     <section class="main-content-block
              w-full bg-[#F5F5F8]
              px-[16px] lg:px-[24px] py-[32px] lg:py-[48px]
@@ -39,60 +29,34 @@
       w-full flex font-500 text-[24px] leading-[32px] letter-[-1%] pb-[16px]
       lg:justify-center lg:pb-[24px]">
         Выберите рассылки, которые подходят именно вам</h2>
-      <form class="email-form w-full h-[56px] relative mb-[16px] lg:mb-[18px]">
-        <input type="email"
-               placeholder="Электронная почта"
-               class="w-full h-[56px] rounded-r-[100px] rounded-l-[4px] p-[16px]
-               lg:rounded-l-[8px]
-               placeholder:text-[#666666] placeholder:text-[16px]" />
-        <button class="email-btn
-        h-[56px] w-[56px] rounded-full
-        lg:w-[163px] rounded-[100px]
-        lg:flex justify-center justify-items-center
-        bg-[#316FEE] text-white absolute top-0 right-0">
-          <img
-              src="@/assets/arrow.png"
-              class="mx-auto lg:hidden"
-              alt="logo"
-          />
-          <span class="sm:hidden lg:flex text-[16px] text-white leading-[24px] m-auto">Подписаться</span>
-        </button>
-      </form>
+      <EmailForm />
       <subscribe-all-btn class="mb-[24px]" />
       <div class="subs-list
-                  grid lg:grid-cols-2 gap-[24px]
-">
+                  grid lg:grid-cols-2 gap-[24px]">
         <subscribe-tile
             v-for="item in subscribesItems" :key="item.id" :item="item"
         />
       </div>
 
     </section>
-    <div class="bottom w-full flex justify-center pt-[48px] pb-[48px]">
-      <img src="/images/bottom_img.png">
-    </div>
+    <BottomBlock />
 
   </div>
 </template>
 
 <script setup>
 import BreadCrumbs from "@/components/BreadCrumbs.vue";
-import {reactive, ref} from "vue";
 import SubscribeAllBtn from "@/components/SubscribeAllBtn.vue";
 import SubscribeTile from "@/components/SubscribeTile.vue";
+import SubscribesNav from "@/components/SubscribesNav.vue";
+import EmailForm from "@/components/EmailForm.vue";
+import BottomBlock from "@/components/BottomBlock.vue";
 
 const breadcrumbsItems = [
   {text: 'Главная', link: '/'},
   {text: 'Рассылки', link: '/'},
   {text: 'Хлебные крошки', link: '/'},
 ]
-
-const navItems = reactive([
-  {id: 'subs', title: 'Рассылки', block: '' },
-  {id: 'nets', title: 'Соцсети', block: '' },
-  {id: 'mess', title: 'Мессенджеры', block: '' },
-])
-let navActive = ref({id: 'subs', title: 'Рассылки', block: '' })
 
 const subscribesItems = [{
     id: 1,
@@ -144,33 +108,10 @@ const subscribesItems = [{
   }
 ]
 
-function selectNavItem(navItem) {
-  navActive.value = navItem
-}
+
 
 
 </script>
 
 <style scoped lang="scss">
-@media (min-width: 0) {
-  .nav-item {
-    color: #666666;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 24px;
-    border-bottom: 2px solid transparent;
-    padding-bottom: 16px;
-    padding-left: 8px;
-    padding-right: 8px;
-    &:hover {
-      cursor: pointer;
-    }
-    &.active {
-      color: #5A8CF1;
-      border-bottom: 2px solid #5A8CF1;
-    }
-  }
-  
-
-}
 </style>
